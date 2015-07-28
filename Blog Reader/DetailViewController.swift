@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
 
   
+    @IBOutlet weak var webView: UIWebView!
 
     var detailItem: AnyObject? {
         didSet {
@@ -20,6 +21,13 @@ class DetailViewController: UIViewController {
     }
 
     func configureView() {
+        if let detail: AnyObject = self.detailItem {
+        if let wv = self.webView {
+         
+            wv.loadHTMLString(detail.valueForKey("content")!.description, baseURL: nil)
+        }
+        }
+        
             }
 
     override func viewDidLoad() {
